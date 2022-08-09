@@ -1,209 +1,231 @@
-<div class="header row">
-    <div class="logo-and-company mt-3 col-5">
-        <h4>Foggy Ironing</h4>
-        <small class="text-muted">All type of cloths steam ironing here</small>
-    </div>
-    <div class="address details col text-end mt-3">
-        <div class="phone py-1">
-            <span class="icon">
-               <i class="fa fa-phone" aria-hidden="true"></i>
-               </span>
-            <span class="number fw-bold">+91 90427 72551</span>
+<section class="bill-section" #billSection *ngIf="response!=null">
+    <div class="header row">
+        <div class="logo-and-company mt-3 col-5">
+            <h4>Foggy Ironing</h4>
+            <small class="text-muted">All type of cloths steam ironing here</small>
         </div>
-        <div class="phone py-1">
-            <span class="icon"> 
-                <i class="fa fa-phone" aria-hidden="true"></i>
-            </span>
-            <span class="number fw-bold">
-                +91 97866 36123
-            </span>
-        </div>
-        <div class="address mx-2 text-muted text-end">
-            <small class="shop"> No.3, Chokkampudur Road,</small>
-            <small class="landmark"> Near by SBOA School, <br> Coimbatore</small>
-        </div>
-    </div>
-</div>
-<hr>
-<div class="p text-end">
-    <span>Bill No :</span>
-    <span> BIL-240</span>
-</div>
-<h4 class="mx-1"><u>Orders</u></h4>
-<div class="order-lines-details d-flex justify-content-center">
-    <table class="order-lines table table-sm align-middle boarder border-dark">
-        <thead>
-            <tr>
-                <th scope="col" colspan="2" class="text-center">Product</th>
-                <th scope="col" class="text-end">Rate</th>
-                <th scope="col" class="text-end">Count</th>
-                <th scope="col" class="text-end pe-4">Price</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr>
-                <td colspan="2">
-                    <div class="product-details text-start">
-                        <div class="product-name"><span class="fw-bold">product 1</span></div>
-                        <div class="product-name"><small class="text-muted">discrpnf;lasdfkj;laskjf</small></div>
-                    </div>
-                </td>
-                <td class="text-end">₹ 5</td>
-                <td class="text-end">1</td>
-                <td class="text-end pe-4">₹ 55</td>
-            </tr>
-        </tbody>
-        <tfoot>
-            <td colspan="4" class="text-end py-1">
-                <span class="px-2">
-                    Total :
+        <div class="address details col text-end mt-3">
+            <div class="phone py-1">
+                <span class="icon">
+                   <i class="fa fa-phone" aria-hidden="true"></i>
+                   </span>
+                <span class="number fw-bold">+91 90427 72551</span>
+            </div>
+            <div class="phone py-1">
+                <span class="icon"> 
+                    <i class="fa fa-phone" aria-hidden="true"></i>
                 </span>
-                <span class="total-count fw-bold">5</span>
-            </td>
-            <td class="amount text-end pe-3 fw-bold">
-                ₹ 1000
-            </td>
-        </tfoot>
-    </table>
-</div>
-<!-- order details -->
-<div class="order-details mb-3 col-12 d-flex align-items-stretch">
-    <div class="card border border-secondary">
-        <div class="title p-1 bg-light">
-            <h6>Order Details</h6>
-        </div>
-        <div class="body">
-            <div class="row">
-                <div class="col-12 m-1 row m-0 p-0">
-                    <span class="orderid col-4 text-end">
-                            Order ID :
-                        </span>
-                    <span class="orderid col-8">
-                            ord-120
-                        </span>
-                </div>
-                <div class="col-12 m-1 row m-0 p-0">
-                    <span class="address col-4 text-end">
-                           Paid Amount :
-                        </span>
-                    <span class="address col-8">
-                            ₹ 123
-                        </span>
-                </div>
-                <div class="col-12 m-1 row m-0 p-0">
-                    <span class="status col-4 text-end">
-                            Status :
-                        </span>
-                    <span class="status col-8">
-                            not paid
-                        </span>
-                </div>
-                <div class="col-12 m-1 row m-0 p-0">
-                    <span class="balance col-4 text-end">
-                            Balance :
-                        </span>
-                    <span class="balance col-8">
-                            ₹ 0
-                        </span>
-                </div>
-                <div class="col-12 m-1 row m-0 p-0">
-                    <span class="order-date col-4 text-end">
-                            Order Date :
-                        </span>
-                    <span class="order-date col-8">
-                            date
-                        </span>
-                </div>
-                <div class="col-12 m-1 row m-0 p-0">
-                    <span class="completed-date col-4 text-end">
-                            Completed :
-                        </span>
-                    <span class="completed-date col-8">
-                            date
-                        </span>
-                </div>
-                <div class="col-12 m-1 row m-0 p-0">
-                    <span class="delivered-date col-4 text-end">
-                            Delivered :
-                        </span>
-                    <span class="delivered-date col-8">
-                            date
-                        </span>
-                </div>
+                <span class="number fw-bold">
+                    +91 97866 36123
+                </span>
+            </div>
+            <div class="address mx-2 text-muted text-end">
+                <small class="shop"> No.3, Chokkampudur Road,</small>
+                <small class="landmark"> Near by SBOA School, <br> Coimbatore</small>
             </div>
         </div>
     </div>
-</div>
+    <hr>
 
-<h4 class="mx-1"><u>Payments</u></h4>
-<div class="payment-details d-flex justify-content-center">
-    <table class="payment table table-sm align-middle boarder border-dark">
-        <thead>
-            <tr>
-                <th scope="col" colspan="2" class="text-center">Payment Id</th>
-                <th scope="col" class="text-end">Date</th>
-                <th scope="col" class="text-end">Amount</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr>
-                <td colspan="2">
-                    <div class="product-details text-center">
-                        <div class="product-name"><span class="fw-bold">product 1</span></div>
-                    </div>
+    <div class="p text-end">
+        <span>Order No : </span>
+        <span>{{ response.orderDetails.id }}</span>
+    </div>
+
+
+    <!-- order lines section -->
+    <h4 class="mx-1"><u>Orders</u></h4>
+    <div class="order-lines-details d-flex justify-content-center">
+        <table class="order-lines table table-sm align-middle boarder border-dark">
+            <thead>
+                <tr>
+                    <th scope="col" colspan="2" class="text-center">Product</th>
+                    <th scope="col" class="text-end">Rate</th>
+                    <th scope="col" class="text-end">Count</th>
+                    <th scope="col" class="text-end pe-4">Price</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let product of response.orderDetails.orderLines">
+                    <td colspan="2">
+                        <div class="product-details text-start">
+                            <div class="product-name"><span class="fw-bold">{{product.productName}}</span></div>
+                            <div class="product-name"><small class="text-muted">description of mine</small></div>
+                        </div>
+                    </td>
+                    <td class="text-end">₹ {{getProductRate(product.price,product.count)}}
+                        <br>
+                        <small class="text-center text-muted">per Piece</small>
+                    </td>
+                    <td class="text-end">{{product.count}}</td>
+                    <td class="text-end pe-4">₹ {{product.price}}</td>
+                </tr>
+            </tbody>
+            <tfoot>
+                <td colspan="4" class="text-end py-1">
+                    <span class="px-2">
+                        Total :
+                    </span>
+                    <span class="total-count fw-bold">{{response.orderDetails.count}}</span>
                 </td>
-                <td class="text-end">₹ 5</td>
-                <td class="text-end">1</td>
-            </tr>
-        </tbody>
-    </table>
-</div>
+                <td class="amount text-end pe-4 fw-bold">
+                    ₹ {{response.orderDetails.amount}}
+                </td>
+            </tfoot>
+        </table>
+    </div>
 
-<!-- customer details -->
-<div class="customer-details col-12 d-flex align-items-stretch mb-3">
-    <div class="card border border-secondary">
-        <div class="title p-1 bg-light">
-            <h6>Customer Details</h6>
-        </div>
-        <div class="body m-1">
-            <div class="row">
-                <div class="col-12 m-1 row m-0 p-0">
-                    <span class="customerId col-4 text-end">
-                            CustomerID :
-                        </span>
-                    <span class="customerId col-8">
-                            test
-                        </span>
-                </div>
-                <div class="col-12 m-1 row m-0 p-0">
-                    <span class="name col-4 text-end">
-                            Name :
-                        </span>
-                    <span class="name col-8">
-                            dhana
-                        </span>
-                </div>
-                <div class="col-12 m-1 row m-0 p-0">
-                    <span class="number col-4 text-end">
-                            Number :
-                        </span>
-                    <span class="number col-8">
-                            9361312424
-                        </span>
-                </div>
-                <div class="col-12 m-1 row m-0 p-0">
-                    <span class="address col-4 text-end">
-                            Address :
-                        </span>
-                    <span class="address col-8">
-                            address
-                        </span>
+
+
+    <!-- order details -->
+    <div class="order-details mb-3 col-12 d-flex align-items-stretch">
+        <div class="card border border-secondary">
+            <div class="title p-1 bg-light">
+                <h6>Order Details</h6>
+            </div>
+            <div class="body">
+                <div class="row">
+                    <div class="col-12 m-1 row m-0 p-0">
+                        <span class="orderid col-4 text-end">
+                                Order ID :
+                            </span>
+                        <span class="orderid col-8">
+                                {{response.orderDetails.id}}
+                            </span>
+                    </div>
+                    <div class="col-12 m-1 row m-0 p-0">
+                        <span class="address col-4 text-end">
+                               Paid Amount :
+                            </span>
+                        <span class="address col-8">
+                                ₹ {{response.orderDetails.orderPaymentsDetails.paidAmount}}
+                            </span>
+                    </div>
+                    <div class="col-12 m-1 row m-0 p-0">
+                        <span class="status col-4 text-end">
+                                Status :
+                            </span>
+                        <span class="status col-8">
+                                {{response.orderDetails.orderPaymentsDetails.status}}
+                            </span>
+                    </div>
+                    <div class="col-12 m-1 row m-0 p-0">
+                        <span class="balance col-4 text-end">
+                                Balance :
+                            </span>
+                        <span class="balance col-8">
+                                ₹ {{response.orderDetails.orderPaymentsDetails.balance}}
+                            </span>
+                    </div>
+                    <div class="col-12 m-1 row m-0 p-0">
+                        <span class="order-date col-4 text-end">
+                                Order Date :
+                            </span>
+                        <span class="order-date col-8">
+                                {{response.orderDetails.orderDate}}
+                            </span>
+                    </div>
+                    <div class="col-12 m-1 row m-0 p-0">
+                        <span class="completed-date col-4 text-end">
+                                Completed :
+                            </span>
+                        <span class="completed-date col-8">
+                            {{response.orderDetails.completedDate}}
+                            </span>
+                    </div>
+                    <div class="col-12 m-1 row m-0 p-0">
+                        <span class="delivered-date col-4 text-end">
+                                Delivered :
+                            </span>
+                        <span class="delivered-date col-8">
+                            {{response.orderDetails.deliveredDate}}
+                            </span>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
-</div>
 
-<div class="footer text-center">
-    <small class="text-muted"> This is auto generated bill sign doesn't required</small>
+
+    <!-- payment transaction section -->
+
+    <h4 class="mx-1"><u>Payments</u></h4>
+    <div class="payment-details d-flex justify-content-center">
+        <table class="payment table table-sm align-middle boarder border-dark">
+            <thead>
+                <tr>
+                    <th scope="col" colspan="2" class="text-center">Transaction Id</th>
+                    <th scope="col" class="text-end">Date</th>
+                    <th scope="col" class="text-end">Type</th>
+                    <th scope="col" class="text-end">Amount</th>
+
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let transaction of response.orderDetails.paymentTransactions">
+                    <td colspan="2">
+                        <div class="product-details text-center">
+                            <div class="product-name"><span class="fw-bold">{{transaction.id}}</span></div>
+                        </div>
+                    </td>
+                    <td class="text-end" [innerHTML]="getFormattedDate(transaction.createdOn)"></td>
+                    <td class="text-end">{{transaction.paymentType}}</td>
+                    <td class="text-end">₹ {{transaction.paidAmount}}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <!-- customer details -->
+    <div class="customer-details col-12 d-flex align-items-stretch mb-3">
+        <div class="card border border-secondary">
+            <div class="title p-1 bg-light">
+                <h6>Customer Details</h6>
+            </div>
+            <div class="body m-1">
+                <div class="row">
+                    <div class="col-12 m-1 row m-0 p-0">
+                        <span class="customerId col-4 text-end">
+                                CustomerID :
+                            </span>
+                        <span class="customerId col-8">
+                                {{response.customerDetails.id}}
+                            </span>
+                    </div>
+                    <div class="col-12 m-1 row m-0 p-0">
+                        <span class="name col-4 text-end">
+                                Name :
+                            </span>
+                        <span class="name col-8">
+                            {{response.customerDetails.name}}
+                            </span>
+                    </div>
+                    <div class="col-12 m-1 row m-0 p-0">
+                        <span class="number col-4 text-end">
+                                Number :
+                            </span>
+                        <span class="number col-8">
+                            {{response.customerDetails.phoneNumber}}
+                            </span>
+                    </div>
+                    <div class="col-12 m-1 row m-0 p-0">
+                        <span class="address col-4 text-end">
+                                Address :
+                            </span>
+                        <span class="address col-8">
+                            {{response.customerDetails.address}}
+                            </span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="footer text-center">
+        <small class="text-muted"> This is auto generated bill sign doesn't required</small>
+    </div>
+</section>
+
+<div class="download-button row justify-content-center py-3">
+    <button class="btn btn-primary col-11" (click)="downloadThisBill()">Download PDF Bill</button>
 </div>
