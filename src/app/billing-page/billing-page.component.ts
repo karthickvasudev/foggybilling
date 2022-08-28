@@ -11,7 +11,7 @@ import { GetTransactionBill } from 'src/modals/getTransactionBill';
   styleUrls: ['./billing-page.component.css']
 })
 export class BillingPageComponent implements OnInit {
-  baseUrl = "http://192.168.0.102:8080/api/v1/bill"
+  baseUrl = "http://foggyironing.ddns.net:8080/api/v1/bill"
   billUrl: any;
 
   public response!: GetTransactionBill;
