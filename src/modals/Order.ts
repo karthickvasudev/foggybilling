@@ -1,21 +1,25 @@
 import { ORDERSTATUS, PAYMENTSTATUS, PAYMENTTYPE } from "src/constants/projectEnums";
 
-export interface GetTransactionBill {
-    customerDetails: CustomerDetails;
-    orderDetails: OrderDetails;
-}
 
-interface CustomerDetails {
+export interface Order {
     id: string;
-    name: string;
-    phoneNumber: string;
-    address?: any;
-    city?: any;
-    pinCode?: any;
+    customerId: string;
+    billUrl: string,
+    orderDate: string;
+    startedDate?: any;
+    completedDate?: any;
+    expectedDeliveryDate: string;
+    deliveredDate: string;
+    count: number;
+    amount: number;
+    status: ORDERSTATUS;
+    orderPaymentsDetails: OrderPaymentsDetails;
+    orderLines: OrderLine[];
+    paymentTransactions: PaymentTransaction[];
     createOn: string;
     createdBy: string;
-    updatedOn?: any;
-    updatedBy?: any;
+    updatedOn: string;
+    updatedBy: string;
 }
 
 interface OrderPaymentsDetails {
@@ -50,23 +54,5 @@ interface PaymentTransaction {
     updatedBy?: any;
 }
 
-interface OrderDetails {
-    id: string;
-    customerId: string;
-    orderDate: string;
-    startedDate?: any;
-    completedDate?: any;
-    expectedDeliveryDate: string;
-    deliveredDate: string;
-    count: number;
-    amount: number;
-    status: ORDERSTATUS;
-    orderPaymentsDetails: OrderPaymentsDetails;
-    orderLines: OrderLine[];
-    paymentTransactions: PaymentTransaction[];
-    createOn: string;
-    createdBy: string;
-    updatedOn: string;
-    updatedBy: string;
-}
+
 

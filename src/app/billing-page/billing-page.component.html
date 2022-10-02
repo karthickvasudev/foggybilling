@@ -1,4 +1,4 @@
-<section class="bill-section" #billSection *ngIf="response!=null">
+<section class="bill-section" #billSection *ngIf="orderResponse!=null && customerResponse!=null">
     <div class="header row">
         <div class="logo-and-company mt-3 col-5">
             <h4>Foggy Ironing</h4>
@@ -11,14 +11,6 @@
                    </span>
                 <span class="number fw-bold">+91 90427 72551</span>
             </div>
-            <div class="phone py-1">
-                <span class="icon"> 
-                    <i class="fa fa-phone" aria-hidden="true"></i>
-                </span>
-                <span class="number fw-bold">
-                    +91 97866 36123
-                </span>
-            </div>
             <div class="address mx-2 text-muted text-end">
                 <small class="shop"> No.3, Chokkampudur Road,</small>
                 <small class="landmark"> Near by SBOA School, <br> Coimbatore</small>
@@ -29,7 +21,7 @@
 
     <div class="p text-end">
         <span>Order No : </span>
-        <span>{{ response.orderDetails.id }}</span>
+        <span>{{ orderResponse.id }}</span>
     </div>
 
 
@@ -46,11 +38,11 @@
                 </tr>
             </thead>
             <tbody>
-                <tr *ngFor="let product of response.orderDetails.orderLines">
+                <tr *ngFor="let product of orderResponse.orderLines">
                     <td colspan="2">
                         <div class="product-details text-start">
-                            <div class="product-name"><span class="fw-bold">{{product.productName}}</span></div>
-                            <div class="product-name"><small class="text-muted">description of mine</small></div>
+                            <div class="product-name"><span class="fw-bold">{{getProductName(product.productId)}}</span></div>
+                            <div class="product-name"><small class="text-muted"></small></div>
                         </div>
                     </td>
                     <td class="text-end">₹ {{getProductRate(product.price,product.count)}}
@@ -66,10 +58,10 @@
                     <span class="px-2">
                         Total :
                     </span>
-                    <span class="total-count fw-bold">{{response.orderDetails.count}}</span>
+                    <span class="total-count fw-bold">{{orderResponse.count}}</span>
                 </td>
                 <td class="amount text-end pe-4 fw-bold">
-                    ₹ {{response.orderDetails.amount}}
+                    ₹ {{orderResponse.amount}}
                 </td>
             </tfoot>
         </table>
@@ -90,7 +82,7 @@
                                 Order ID :
                             </span>
                         <span class="orderid col-8">
-                                {{response.orderDetails.id}}
+                                {{orderResponse.id}}
                             </span>
                     </div>
                     <div class="col-12 m-1 row m-0 p-0">
@@ -98,7 +90,7 @@
                                Paid Amount :
                             </span>
                         <span class="address col-8">
-                                ₹ {{response.orderDetails.orderPaymentsDetails.paidAmount}}
+                                ₹ {{orderResponse.orderPaymentsDetails.paidAmount}}
                             </span>
                     </div>
                     <div class="col-12 m-1 row m-0 p-0">
@@ -106,7 +98,7 @@
                                 Status :
                             </span>
                         <span class="status col-8">
-                                {{response.orderDetails.orderPaymentsDetails.status}}
+                                {{orderResponse.orderPaymentsDetails.status}}
                             </span>
                     </div>
                     <div class="col-12 m-1 row m-0 p-0">
@@ -114,7 +106,7 @@
                                 Balance :
                             </span>
                         <span class="balance col-8">
-                                ₹ {{response.orderDetails.orderPaymentsDetails.balance}}
+                                ₹ {{orderResponse.orderPaymentsDetails.balance}}
                             </span>
                     </div>
                     <div class="col-12 m-1 row m-0 p-0">
@@ -122,7 +114,7 @@
                                 Order Date :
                             </span>
                         <span class="order-date col-8">
-                                {{response.orderDetails.orderDate}}
+                                {{orderResponse.orderDate}}
                             </span>
                     </div>
                     <div class="col-12 m-1 row m-0 p-0">
@@ -130,7 +122,7 @@
                                 Completed :
                             </span>
                         <span class="completed-date col-8">
-                            {{response.orderDetails.completedDate}}
+                            {{orderResponse.completedDate}}
                             </span>
                     </div>
                     <div class="col-12 m-1 row m-0 p-0">
@@ -138,7 +130,7 @@
                                 Delivered :
                             </span>
                         <span class="delivered-date col-8">
-                            {{response.orderDetails.deliveredDate}}
+                            {{orderResponse.deliveredDate}}
                             </span>
                     </div>
                 </div>
@@ -162,7 +154,7 @@
                 </tr>
             </thead>
             <tbody>
-                <tr *ngFor="let transaction of response.orderDetails.paymentTransactions">
+                <tr *ngFor="let transaction of orderResponse.paymentTransactions">
                     <td colspan="2">
                         <div class="product-details text-center">
                             <div class="product-name"><span class="fw-bold">{{transaction.id}}</span></div>
@@ -189,7 +181,7 @@
                                 CustomerID :
                             </span>
                         <span class="customerId col-8">
-                                {{response.customerDetails.id}}
+                                {{customerResponse.id}}
                             </span>
                     </div>
                     <div class="col-12 m-1 row m-0 p-0">
@@ -197,7 +189,7 @@
                                 Name :
                             </span>
                         <span class="name col-8">
-                            {{response.customerDetails.name}}
+                            {{customerResponse.name}}
                             </span>
                     </div>
                     <div class="col-12 m-1 row m-0 p-0">
@@ -205,7 +197,7 @@
                                 Number :
                             </span>
                         <span class="number col-8">
-                            {{response.customerDetails.phoneNumber}}
+                            {{customerResponse.phoneNumber}}
                             </span>
                     </div>
                     <div class="col-12 m-1 row m-0 p-0">
@@ -213,7 +205,7 @@
                                 Address :
                             </span>
                         <span class="address col-8">
-                            {{response.customerDetails.address}}
+                            {{customerResponse.address}}
                             </span>
                     </div>
                 </div>

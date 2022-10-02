@@ -3,7 +3,9 @@ import { Component, OnInit, ElementRef, ViewChild } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import jsPDF from 'jspdf';
 import html2canvas from 'html2canvas';
-import { GetTransactionBill } from 'src/modals/getTransactionBill';
+import { Order } from 'src/modals/Order';
+import { DBServiceService } from '../service/dbservice.service';
+import { Customer } from 'src/modals/Customer';
 
 @Component({
   selector: 'app-billing-page',
@@ -11,15 +13,19 @@ import { GetTransactionBill } from 'src/modals/getTransactionBill';
   styleUrls: ['./billing-page.component.css']
 })
 export class BillingPageComponent implements OnInit {
-  baseUrl = "http://foggyironing.ddns.net:8080/api/v1/bill"
   billUrl: any;
 
-  public response!: GetTransactionBill;
+  public orderResponse !: Order;
+  public customerResponse !: Customer
+  public products: any = [];
+
+  public response!: any;
 
   @ViewChild('billSection', { static: false })
   private billSection !: ElementRef
 
-  constructor(private http: HttpClient, private activatedRoute: ActivatedRoute, private route: Router) { }
+  constructor(private http: HttpClient, private activatedRoute: ActivatedRoute, private route: Router,
+    private db: DBServiceService) { }
 
   ngOnInit(): void {
     this.billUrl = this.activatedRoute.snapshot.paramMap.get("billUrl")
@@ -27,14 +33,40 @@ export class BillingPageComponent implements OnInit {
   }
 
   billPageLoad() {
-    this.http.get<GetTransactionBill>(this.baseUrl + "/" + this.billUrl)
-      .subscribe({
-        next: (response) => {
-          this.response = <GetTransactionBill>response;
-        }, error: (err) => {
+    this.db.getProducts().subscribe({
+      next: (resp) => {
+          this.products = resp
+      }
+    })
+
+    this.db.getOrders().subscribe({
+      next: (response) => {
+        let order = <Order[]><unknown>response
+        let isOrder = order.filter(e => {
+          return e.billUrl == this.billUrl
+        });
+        if (isOrder.length == 0) {
           this.route.navigate(["/billnotfound"])
+        } else {
+          this.orderResponse = order[0]
+
+          this.db.getCustomerDetail().subscribe({
+            next: (response) => {
+              let customers = <Customer[]>response
+              let customer = customers.filter(cust => {
+                return cust.id == this.orderResponse.customerId
+              })
+
+              if (customer.length == 0) {
+                this.route.navigate(["/billnotfound"])
+              } else {
+                this.customerResponse = customer[0];
+              }
+            }
+          })
         }
-      })
+      }
+    })
   }
 
   public getProductRate(price: any, count: any) {
@@ -52,11 +84,11 @@ export class BillingPageComponent implements OnInit {
 
       const contentDataURL = canvas.toDataURL('image/png')
 
-      let pdf = new jsPDF('p', 'px', [canvas.width, canvas.height],true);
+      let pdf = new jsPDF('p', 'px', [canvas.width, canvas.height], true);
 
-      
 
-      pdf.addImage(contentDataURL, 'JPEG', 20, 0, pdf.internal.pageSize.width-40, pdf.internal.pageSize.height)
+
+      pdf.addImage(contentDataURL, 'JPEG', 20, 0, pdf.internal.pageSize.width - 40, pdf.internal.pageSize.height)
 
       let customerId = this.response.customerDetails.id
       let orderId = this.response.orderDetails.id
@@ -64,5 +96,11 @@ export class BillingPageComponent implements OnInit {
       pdf.save(orderId + "_" + customerId + "_" + deliveryDate)
     })
 
+  }
+
+  public getProductName(id:any){        
+    return this.products.filter((p:any)=>{
+      return p.productId == id
+    })[0].productName
   }
 }

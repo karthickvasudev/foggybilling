@@ -101,6 +101,16 @@
             ],
             "scripts": []
           }
+        },
+        "deploy": {
+          "builder": "@angular/fire:deploy",
+          "options": {
+            "prerender": false,
+            "ssr": false,
+            "browserTarget": "foggybilling:build:production",
+            "firebaseProject": "foggy-ironing",
+            "firebaseHostingSite": "foggy-ironing"
+          }
         }
       }
     }
