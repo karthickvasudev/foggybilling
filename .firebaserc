@@ -1,0 +1,14 @@
+{
+  "projects": {
+    "default": "foggy-ironing"
+  },
+  "targets": {
+    "foggy-ironing": {
+      "hosting": {
+        "foggybilling": [
+          "foggy-ironing"
+        ]
+      }
+    }
+  }
+}

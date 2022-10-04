@@ -35,7 +35,7 @@ export class BillingPageComponent implements OnInit {
   billPageLoad() {
     this.db.getProducts().subscribe({
       next: (resp) => {
-          this.products = resp
+        this.products = resp
       }
     })
 
@@ -48,7 +48,8 @@ export class BillingPageComponent implements OnInit {
         if (isOrder.length == 0) {
           this.route.navigate(["/billnotfound"])
         } else {
-          this.orderResponse = order[0]
+
+          this.orderResponse = isOrder[0]
 
           this.db.getCustomerDetail().subscribe({
             next: (response) => {
@@ -90,16 +91,16 @@ export class BillingPageComponent implements OnInit {
 
       pdf.addImage(contentDataURL, 'JPEG', 20, 0, pdf.internal.pageSize.width - 40, pdf.internal.pageSize.height)
 
-      let customerId = this.response.customerDetails.id
-      let orderId = this.response.orderDetails.id
-      let deliveryDate = this.response.orderDetails.deliveredDate;
+      let customerId = this.customerResponse.id
+      let orderId = this.orderResponse.id
+      let deliveryDate = this.orderResponse.deliveredDate
       pdf.save(orderId + "_" + customerId + "_" + deliveryDate)
     })
 
   }
 
-  public getProductName(id:any){        
-    return this.products.filter((p:any)=>{
+  public getProductName(id: any) {
+    return this.products.filter((p: any) => {
       return p.productId == id
     })[0].productName
   }
